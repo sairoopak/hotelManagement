@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Dispatching Example</title>
+</head>
+<body>
+  <div id="container">
+    <button id="myButton">Click me</button>
+    <pre>
+      function mixin(target, source) {
+        Object.assign(target, source);
+      }
+      
+      class ClassA {
+        methodA() {
+          console.log("Method A");
+        }
+      }
+      
+      class ClassB {
+        methodB() {
+          console.log("Method B");
+        }
+      }
+      
+      class ClassC {
+        constructor() {
+         this.val = "hi"
+        }
+        methodC()
+        {
+          console.log("hi1");
+        }
+      }
+      
+      mixin(ClassC, ClassA.prototype); // Correctly mixin to the prototype
+      mixin(ClassC, ClassB.prototype);
+      
+      const instanceC = new ClassC();
+      instanceC.methodA(); // Output: Method A
+      instanceC.methodB(); // Output: Method B
+      
+      
+      
+    </pre>
+  </div>
+
+  <script>
+
+// Define a custom error using a function constructor
+function CustomError(message) {
+  // Call the Error constructor
+  Error.call(this, message);
+  this.name = 'CustomError'; // Set the error name
+
+  // Custom properties can be added if needed
+  this.customProperty = 'Custom Error Property';
+
+  // Capture the stack trace
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, CustomError);
+  } else {
+    this.stack = new Error().stack; // For environments without captureStackTrace
+  }
+}
+
+// Inherit from Error
+CustomError.prototype = Object.create(Error.prototype);
+CustomError.prototype.constructor = CustomError;
+
+// Usage example
+try {
+  throw new CustomError('This is a custom error message.');
+} catch (error) {
+  if (error instanceof CustomError) {
+    console.error(`CustomError caught: ${error.message}`);
+    console.error(`Custom property: ${error.customProperty}`);
+  } else {
+    console.error(`Generic error caught: ${error.message}`);
+  }
+}
+
+const obj = {};
+console.log(obj.__proto__ === Object.prototype); // true
+
+class Person{
+  static iam(){
+    console.log("i am static class method");
+  }
+  constructor(val)
+  {
+    this.val = val;
+  }
+  human(){
+    console.log("human" + " is : " + val);
+  }
+}
+
+const person1 = new Person('Alice');
+const person2 = Object.create(Person);
+console.log(person1.__proto__ === Person.prototype); // true
+
+
+
+
+function mixin(target, source) {
+  Object.assign(target, source);
+}
+
+class ClassA {
+  methodA() {
+    console.log("Method A");
+  }
+}
+
+class ClassB {
+  methodB() {
+    console.log("Method B");
+  }
+}
+
+class ClassC {
+  constructor() {
+   this.val = "hi"
+  }
+  methodC()
+  {
+    console.log("hi1");
+  }
+}
+
+const a = new ClassA();
+const b = Object.create(ClassA);
+
+// mixin(ClassC, ClassA.prototype); // Correctly mixin to the prototype
+// mixin(ClassC, ClassB.prototype);
+
+// const instanceC = new ClassC();
+// instanceC.methodA(); // Output: Method A
+// instanceC.methodB(); // Output: Method B
+
+
+
+    const button = document.getElementById('myButton');
+    const container = document.getElementById('container');
+
+    // Event listener on the button
+    button.addEventListener('click', () => {
+      console.log('Button clicked');
+    });
+
+    // Event listener on the container
+    container.addEventListener('click', () => {
+      console.log('Container clicked');
+    });
+
+    // Dispatching the event from the button
+    button.dispatchEvent(new Event('click'));
+  </script>
+</body>
+</html>

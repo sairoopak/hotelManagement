@@ -1,0 +1,302 @@
+body{
+    margin: 0;
+    background-color: lightblue;
+}
+#tsidForgotPassword, #tsidHelpForm{
+    margin: 2rem;
+}
+#tsidForgotPassword p, #tsidHelpForm p{
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+#tsidForgotPassword h1, #tsidHelpForm h1{
+    font-size: 2rem;
+}
+
+#tsidLoginSection{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    margin: 12rem auto;
+    padding: 5rem;
+    width: fit-content;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid black;
+}
+
+#tsidLoginSection h1{
+    margin-bottom: 1.5rem;
+}
+
+#tsidCredentials input{
+    margin: .5rem;
+    padding: .75rem;
+    width: 15rem;
+}
+
+#tsidSignin{
+    display: flex;
+    margin: .5rem;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tsidSignin #tsidSigninBtn{
+    background-color: rgb(7, 97, 7);
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: .75rem;
+}
+
+#tsidHelp, #tsidForgotPwd{
+    cursor: pointer;
+}
+
+#tsidLoginError{
+    color: rgb(224, 6, 6);
+}
+
+header {
+    font-weight: bold ;
+    padding: 1.5rem;
+    margin: auto;
+    font-size: 1.8rem;
+}
+
+#tsidHeading{
+    font-size: 1.5rem;
+    top: 0;
+    width: 10%;
+    padding: 1.8rem;
+    position: sticky;
+}
+
+#tsidNavItems{
+    display: flex;
+    background-color: #b0ced9;
+    padding: .5rem;
+}
+
+#tsidLinks{
+    width: 90%;
+    display: flex;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    justify-content: space-around;
+}
+
+#tsidLinks div{
+    padding: .5rem .75rem;
+}
+
+.tsclsActiveNavItem {
+    color: white; 
+    background-color: rgb(34, 47, 102);
+    border-radius: .5rem;
+    background-color: rgb(34, 47, 102);
+}
+
+.tsclsLogout{
+    text-decoration: underline;
+    color: blue;
+}
+
+#tsidAdminAddRoomSection, #tsidAdminDeleteRoomSection,
+#tsidShowProfitSection, #tsidBookingReportSection, 
+#tsidBookingDetailsSection, #tsidRoomBookingSection, 
+#tsidRoomAvailabilitySection{
+    margin: 2rem;
+}
+
+
+#tsidRAMarker li{
+    margin: 0rem;
+    padding: 0;
+}
+
+#tsidRoomAvailability{
+    margin: 2rem 0rem;
+    display: flex;
+}
+
+#tsidFloorHeading{
+    margin: 0;
+}
+
+#tsidARHeading, #tsidDRHeading,
+#tsidRAHeading, #tsidBSHeading, 
+#tsidBRHeading, #tsidBRHeading,
+#tsidPRHeading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+#tsidBDPara, 
+#tsidBRPara, 
+#tsidPRPara{
+    font-size: 1.2rem;
+    text-align: center;
+    color: black;
+}
+
+#tsidAdminSection, 
+#tsidOperatorSection, 
+#tsidUserSection{
+    display: none;
+}
+
+#tsidAdminAddRoomSection, #tsidAdminDeleteRoomSection,
+#tsidRoomAvailabilitySection, #tsidRoomBookingSection, 
+#tsidBookingDetailsSection, #tsidBookingReportSection,
+#tsidShowProfitSection
+{
+    display: none;
+}
+
+#tsidNoRoomsErrorMsg{
+    font-size: 1.2rem;
+    /* color: darkblue; */
+}
+
+#tsidRAEntryDetails,
+#tsidNoRoomsErrorMsg,
+#tsidBDTable, 
+#tsidBRTable, 
+#tsidPRTable{
+    display: none;
+}
+
+#tsidEmailErrorMessage, 
+#tsidNumberErrorMessage, 
+#tsidPincodeErrorMessage{
+    color: red;
+    display: none;
+}
+
+#tsidAvailableRoomsDisplay{
+    border-spacing: .3rem;
+}
+
+#tsidRAFloors td{
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+ #tsidRAEntryDetails{
+    margin-left: 3rem;
+ }
+
+ #tsidAdminAddRoomDiv label, #tsidAdminDeleteRoomDiv label,
+ #tsidRAEntryDetails label, #tsidHotelManagement label{
+    font-size: 1.2rem;
+ }
+
+#tsidRAEntryDetails input{
+    margin-top: .5rem;
+    padding: .5rem;
+    width: 12rem;
+}
+
+.tsclsAvailable{
+    color: green;
+    list-style: square;
+    
+}
+
+.tsclsBooked{
+    color: red;
+    list-style: square;
+}
+
+#tsidAdminAddRoomDiv input,
+#tsidAdminDeleteRoomDiv input,
+#tsidHotelManagement input{
+    margin: .5rem .75rem .75rem 0;
+    padding: .5rem;
+}
+
+#tsidHotelManagement input[type=date]{
+    width: 10rem;
+}
+
+#tsidBookingSectionForm{
+    display: flex;
+}
+
+#tsidAdminAddRoomDiv, #tsidAdminDeleteRoomDiv{
+    background-color: lightgrey;
+    width: 30%;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+#tsidBSLeft{
+    width: 40%;
+    padding: 1rem;
+    margin-right: .4rem;
+    background-color: lightgrey;
+}
+
+#tsidBSRight{
+    width: 40%;
+    padding: 1rem;
+    background-color: lightgrey;
+}
+
+#tsidBSRight1{
+    height: 60%;
+    width: 100%;
+}
+
+#tsidBSRight2{
+    margin: 5rem auto;
+    text-align: center;
+}
+
+#tsidAddNewRoomBtn, #tsidDeleteRoomBtn
+{
+    padding: .5rem;
+    color: green;
+}
+
+#tsidNRSubmitBtn{
+    margin: 1rem 0;
+    width: 50%;
+    font-size: 1rem;
+    padding: 1rem;
+    color: green;
+}
+
+#tsidEnteredRoomType,
+#tsidGender, #tsidRoomChoice{
+    width: 12rem;
+    height: 2.2rem;
+    padding-left: 5px;
+    margin: .5rem .75rem .75rem 0;
+}
+
+.tsclsRequiredFeilds{
+    color: red;
+}
+
+.tsclsTableSection table{
+    width: 100%;
+    text-align: center;
+}
+
+.tsclsTableSection table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tsclsTableSection td{
+    padding: .5rem;
+}
+
+

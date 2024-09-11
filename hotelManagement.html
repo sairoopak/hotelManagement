@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hotel</title>
+    <link rel="stylesheet" href="hotelManagement.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <section id="tsidLoginSection">
+        <form id="tsidLoginForm">
+            <div>
+                <h1>The Hotel</h1>
+                <p id="tsidLoginError"></p>
+                <div id="tsidCredentials">
+                    <input type="text" id="tsidUserName" name="text" placeholder="Username" maxlength="20" required> <br>
+                    <input type="password" id="tsidPwd" name="pwd" placeholder="Password" maxlength="20" required> <br>
+                </div>
+                <div id="tsidSignin">
+                    <a href="help.html" id="tsidHelp" target="_blank">need help?</a>
+                <button type="submit" id="tsidSigninBtn" onclick="HandleLogin()"> Sign in</button>
+                </div>
+                <div id="tsidForgotPwdDiv">
+                    <a href="forgotPassword.html" target="_blank" id="tsidForgotPwd">Forgot Password</a>
+                </div>
+                <p id="tsidAttemptCount"></p>
+            </div>
+        </form>
+    </section>
+
+  <!-- Admin Page -->
+  <section id="tsidAdminSection">
+    <header>The Hotel</header>
+
+    <nav id="tsidNavItems">
+        <div id="tsidHeading"><strong> Admin page </strong></div>
+        <div id="tsidLinks"> 
+            <div class="tsclsNavItems" data-target="tsidRoomAvailabilitySection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomAvailabilitySection', 'block')"> Room availability</div>
+            <div class="tsclsNavItems" data-target="tsidAdminAddRoomSection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidAdminAddRoomSection', 'block')">Add room</div>
+            <div class="tsclsNavItems" data-target="tsidAdminDeleteRoomSection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidAdminDeleteRoomSection', 'block')"> Delete room</div>
+            <div class="tsclsNavItems" data-target="tsidRoomBookingSection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomBookingSection', 'block')">Reservation</div>
+            <div class="tsclsNavItems" data-target="tsidBookingDetailsSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidBDTableBody', 'FBookingDetails', 'tsidBookingDetailsSection', 'tsidBDTable');">Booking details</div>
+            <div class="tsclsNavItems" data-target="tsidBookingReportSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidBRTableBody', 'FBookingReport', 'tsidBookingReportSection', 'tsidBRTable');">Booking report</div>
+            <div class="tsclsNavItems" data-target="tsidShowProfitSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidPRTableBody', 'FProfitReport', 'tsidShowProfitSection', 'tsidPRTable');">Profit report</div>
+            <div class="tsclsLogout" onclick="HOTEL.CheckLogout()"> Logout </div>
+        </div>
+    </nav>
+  </section>
+
+  <!-- Operator Page -->
+    <section id="tsidOperatorSection" >
+        <header>The Hotel</header>
+        <nav id="tsidNavItems">
+            <div id="tsidHeading"><strong> Operator Page </strong></div>
+            <div id="tsidLinks"> 
+                <div class="tsclsNavItems" data-target="tsidRoomAvailabilitySection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomAvailabilitySection', 'block')"> Room availability</div>
+                <div class="tsclsNavItems" data-target="tsidRoomBookingSection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomBookingSection', 'block')">Reservation</div>     
+                <div class="tsclsNavItems" data-target="tsidBookingDetailsSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidBDTableBody', 'FBookingDetails', 'tsidBookingDetailsSection', 'tsidBDTable');">Booking details</div>
+                <div class="tsclsNavItems" data-target="tsidBookingReportSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidBRTableBody', 'FBookingReport', 'tsidBookingReportSection', 'tsidBRTable');">Booking report</div>
+                <div class="tsclsLogout" onclick="HOTEL.CheckLogout()"> Logout </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- User Page -->
+    <section id="tsidUserSection">
+        <header>The Hotel</header>
+        <nav id="tsidNavItems">
+            <div id="tsidHeading"><strong> User page </strong></div>
+            <div id="tsidLinks"> 
+                <div class="tsclsNavItems" data-target="tsidRoomAvailabilitySection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomAvailabilitySection', 'block')"> Room availability</div>
+                <div class="tsclsNavItems" data-target="tsidRoomBookingSection" onclick="HOTEL.ClearAllSections(); HOTEL.SetDisplayStyle('tsidRoomBookingSection', 'block')">Reservation</div>
+                <div class="tsclsNavItems" data-target="tsidBookingReportSection" onclick="HOTEL.ClearAllSections(); HOTEL.RenderReport('tsidBRTableBody', 'FBookingReport', 'tsidBookingReportSection', 'tsidBRTable');">Booking report</div>
+                <div class="tsclsLogout" onclick="HOTEL.CheckLogout()"> Logout </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Admin add room -->
+    <section id="tsidAdminAddRoomSection">
+        <h1 id="tsidARHeading">Add room</h1>
+        <div id="tsidAdminAddRoomDiv">
+            <form id="tsidAdminAddRoom">
+                <label for="tsidEnteredRoomNumber">Room Number <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <input type="text" id="tsidEnteredRoomNumber" oninput="HOTEL.AllowNumberOnly(this)" maxlength="3" placeholder="Enter room number" required>
+                <br>
+                <label for="tsidEnteredRoomType">Room Type <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <select id="tsidEnteredRoomType" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="AC">AC</option>
+                    <option value="NON-AC">NON-AC</option>
+                </select>
+                <br>
+                <label for="tsidEnteredFloorNumber">Floor Number <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <input type="text" id="tsidEnteredFloorNumber" oninput="HOTEL.AllowNumberOnly(this)" maxlength="2" placeholder="Enter floor number" required>
+                <br>
+                <label for="tsidEnteredRent">Rent <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <input type="text" id="tsidEnteredRent" oninput="HOTEL.AllowNumberOnly(this)" placeholder="Enter rent" maxlength="6" required>
+                <br>
+                <label for="tsidEnteredMaintenanceCost">Maintenance Cost <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <input type="text" id="tsidEnteredMaintenanceCost" oninput="HOTEL.AllowNumberOnly(this)" placeholder="Enter maintenance cost" maxlength="4" required>
+                <br> <br>
+                <button type="submit" id="tsidAddNewRoomBtn" onclick="HOTEL.AddRoom()">Add room</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Admin delete room -->
+    <section id="tsidAdminDeleteRoomSection">
+        <h1 id="tsidDRHeading">Delete room</h1>
+        <div id="tsidAdminDeleteRoomDiv">
+            <form id="tsidAdminDeleteRoom">
+                <label for="tsidDeleteRoomNumber">Room Number <span class="tsclsRequiredFeilds">*</span></label> <br>
+                <input type="text" id="tsidDeleteRoomNumber" oninput="HOTEL.AllowNumberOnly(this)" maxlength="3" placeholder="Enter room number" required>
+                <br> <br>
+                <button type="submit" id="tsidDeleteRoomBtn" onclick="HOTEL.DeleteRoom()">Delete room</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Room availability section -->
+    <section id="tsidRoomAvailabilitySection" >
+        <h1 id="tsidRAHeading">Room Availability</h1>
+        <div id="tsidRAMarker">
+            <ul>
+                <li class="tsclsAvailable">Available</li>
+                <li class="tsclsBooked">Booked</li>
+            </ul>
+        </div>
+        <section id="tsidRoomAvailability">
+            <div id="tsidRAFloors">
+                <p id="tsidNoRoomsErrorMsg"> No rooms available</p>
+                <table id="tsidAvailableRoomsDisplay">
+                </table>
+            </div>
+            <div id="tsidRAEntryDetails"> 
+                <label for="tsidRAEntryDate" >Entry [date]</label> <br>
+                <input type="date" id="tsidRAEntryDate" onclick="HOTEL.SetMinimumDate(this);" onchange = "HOTEL.ColorBasedOnAvailability();" >
+            </div>
+        </section>
+    </section>
+
+    <!-- Book room section -->
+    <section id="tsidRoomBookingSection" >
+        <section id="tsidHotelManagement">
+            <h1 id="tsidBSHeading">Reservation</h1>
+            <form id="tsIdBookingForm">
+             <div id="tsidBookingSectionForm">
+               <div id="tsidBSLeft">
+                   <label for="tsidFname">Name <span class="tsclsRequiredFeilds">*</span></label> <br>
+                   <input type="text" id="tsidFname" name="FirstName" placeholder="FirstName" maxlength="20" oninput="HOTEL.ValidateName(this)" required>  
+                   <input type="text" id="tsidLname" name="LastName" placeholder="LastName" maxlength="20" oninput="HOTEL.ValidateName(this)" required>  <br>
+   
+                   <label for="tsidBday">Birthday <span class="tsclsRequiredFeilds">*</span></label> <br>  
+                   <input type="date" name="Bday" id="tsidBday" oninput="HOTEL.SetAgeEligibility()" onclick="HOTEL.SetAgeEligibility()" required> <br>
+       
+                   <label for="tsidGender">Gender</label> <br>
+                   <select id="tsidGender">
+                       <option value="" disabled selected>Select your Gender  </option>
+                       <option value="Male"> Male</option>
+                       <option value="Female"> Female </option>
+                       <option value="Others"> Others </option>
+                   </select> <br>
+   
+                   <label for="tsidUserNumber">Phone number <span class="tsclsRequiredFeilds">*</span></label> <br>
+                   <input type="text" id="tsidUserNumber" name="Number" oninput="HOTEL.ValidatePhoneNumber(this, 'tsidNumberErrorMessage')" placeholder="Number" maxlength="10" required> <br>
+                   <span id="tsidNumberErrorMessage" > Enter valid 10 digit number</span> <br>
+   
+                   <label for="tsidUserEmail">Email </label> <br>
+                   <input type="text" id="tsidUserEmail" name="Email" maxlength="30" oninput="HOTEL.ValidateEmail(this)" placeholder="Email"> <br>
+                   <span id="tsidEmailErrorMessage" > Enter valid email address</span> <br>
+
+                   <label for="tsidUserAddress">Address </label> <br>
+                   <input type="text" id="tsidUserAddress" name="Dno" placeholder="House no." maxlength="6"> <br>
+                   <input type="text" id="tsidUserPincode" name="Pincode" oninput="HOTEL.ValidatePincode(this, 'tsidPincodeErrorMessage')" maxlength="6" placeholder="Pincode">
+                   <span id="tsidPincodeErrorMessage" > Enter valid pincode</span> <br>
+                   <input type="text" id="tsidUserCity" name="City" maxlength="20" oninput="HOTEL.ValidateName(this)" placeholder="City"> <br>
+               </div>
+
+                <div id="tsidBSRight">
+                    <div id="tsidBSRight1">
+                        <label for="tsidEntryDate">Entry [date] <span class="tsclsRequiredFeilds">*</span></label> <br>
+                        <input type="date" name="EntryDate" id="tsidEntryDate" oninput="HOTEL.SetMinimumDate(this);" onclick="HOTEL.SetMinimumDate(this);" onchange="HOTEL.SetDepatureDate(); HOTEL.GiveAvailableRoomOptions('tsidRoomChoice');" required> <br> 
+                        
+                        <label for="tsidDepature">Depature [date] <span class="tsclsRequiredFeilds">*</span></label> <br>
+                        <input type="date" id="tsidDepature" name="DepatureDate"  onchange="HOTEL.GiveAvailableRoomOptions('tsidRoomChoice')" required disabled > <br>
+                        
+                        <label for="tsidRoomChoice">Your choices <span class="tsclsRequiredFeilds">*</span></label> <br>
+                        <select id="tsidRoomChoice" name="availableRooms" required> 
+                            <option value="" disabled selected>Available rooms</option>
+                        </select>
+                    </div>
+                    
+                    <div id="tsidBSRight2">
+                        <button type="submit" id="tsidNRSubmitBtn" onclick="HOTEL.BookRoom();"> New reservation</button> <br>
+                    </div>
+                </div>
+             </div>
+            </form>
+        </section>
+    </section>
+
+    <!-- Booking details section -->
+    <section id="tsidBookingDetailsSection" >
+        <h1 id="tsidBRHeading">Booking Details</h1>
+        <section class="tsclsTableSection">
+            <p id="tsidBDPara">No records found.</p>
+            <table border="1" id="tsidBDTable" class="tsclsTable"> 
+                <thead>
+                    <tr>
+                        <td><b>S.No</b></td>
+                        <td><b>Customer Name</b></td>
+                        <td><b>Birthday</b></td>
+                        <td><b>Gender</b></td>
+                        <td><b>Phone Number</b></td>
+                        <td><b>Email Address</b></td>
+                        <td><b>Full Address</b></td>
+                        <td><b>Room No</b></td>
+                        <td><b>CheckIn</b></td>
+                        <td><b>CheckOut</b></td>
+                    </tr>
+                </thead>
+                <tbody id="tsidBDTableBody">
+                        
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <!-- Booking report section -->
+    <section id="tsidBookingReportSection" >
+        <h1 id="tsidBRHeading">Booking Report</h1>
+        <section class="tsclsTableSection">
+            <p id="tsidBRPara">No records found.</p>
+            <table border="1" id="tsidBRTable" class="tsclsTable"> 
+                <thead>
+                    <tr>
+                        <td><b>S.No</b></td>
+                        <td><b>Customer Name</b></td>
+                        <td><b>Room No</b></td>
+                        <td><b>CheckIn-Date</b></td>
+                        <td><b>CheckOut-Date</b></td>
+                        <td><b>Amount Paid</b></td>
+                    </tr>
+                </thead>
+                <tbody id="tsidBRTableBody">
+                        
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <!-- Profit report section -->
+    <section id="tsidShowProfitSection" >
+        <h1 id="tsidPRHeading">Generate Profit</h1>
+        <section class="tsclsTableSection">
+            <p id="tsidPRPara">No records found.</p>
+            <table border="1" id="tsidPRTable" class="tsclsTable">
+                <thead>
+                    <tr>
+                        <td><b>S.No</b></td>
+                        <td><b>Floor No</b></td>
+                        <td><b>Room No</b></td>
+                        <td><b>Days</b></td>
+                        <td><b>Gain</b></td>
+                        <td><b>Loss</b></td>
+                        <td><b>Profit</b></td>
+                    </tr>
+                </thead>
+                <tbody id="tsidPRTableBody">
+        
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <script src="hotelManagement.js"></script>
+</body>
+</html>
