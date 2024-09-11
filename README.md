@@ -55,27 +55,35 @@ For Admins: Full access to manage bookings, rooms, and view the hotel's financia
 📸 Screenshots
 
 Login Page
+
 ![{0709C421-84AA-4BF0-9A1E-4014D4FF8EE6}](https://github.com/user-attachments/assets/ded32a24-b871-4054-8a20-1772946b463a)
 
 Admin Page
+
 ![{2FC4356B-FEF0-4ABD-9CFD-A95D451D0B92}](https://github.com/user-attachments/assets/acf98a08-1490-4543-9139-87d54dd7cf1c)
 
 Operator Page
+
 ![{B32E61C3-1020-4A22-A5C8-BD3E6CD0CF68}](https://github.com/user-attachments/assets/ca316d99-c21e-4334-96ad-1f3ae915c999)
 
 User Page
+
 ![{1BFB57BF-074D-4ABE-AB56-CB0205DAAEC6}](https://github.com/user-attachments/assets/ee11cca9-1852-4677-b3d1-7b2307a51335)
 
 Reservation Page
+
 ![{3049490D-84F7-4ECD-8349-5889F1DE41BC}](https://github.com/user-attachments/assets/584c9602-1a35-41b1-be25-b332b37e10ed)
 
 Booking Details
+
 ![{4791E87E-9215-4CFF-9069-A59347EC9133}](https://github.com/user-attachments/assets/e4c531bc-4624-4ef9-857e-a1707765b50c)
 
 Booking Report
+
 ![{849725FF-F970-4D5F-AF4A-D2474C0AA893}](https://github.com/user-attachments/assets/70b71d9e-9f15-42ea-b0b8-c045f44c0b6f)
 
 Profit Report
+
 ![{235FF9B5-144F-4D5D-B5AF-99748740F603}](https://github.com/user-attachments/assets/605d5fdb-d269-4a77-9e85-33ae08609254)
 
 
